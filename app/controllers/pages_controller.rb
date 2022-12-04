@@ -15,6 +15,9 @@ class PagesController < ApplicationController
     if (find_n(@input))
       @result_m = find_n(@input).result.split(' ')
       @count = find_n(@input).count
+      logger.debug "HERE IS THE RESULT CLASS"
+      logger.debug find_n(@input).result
+      logger.debug find_n(@input).result.class
     else 
       @result_m = mersenne_to_n(@input)
       add_to_db(@input, @result_m)
