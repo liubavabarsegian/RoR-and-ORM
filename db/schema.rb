@@ -10,21 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_065440) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_04_130753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "elements", id: false, force: :cascade do |t|
-    t.integer "input", null: false
-    t.float "result_array", array: true
-    t.integer "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "mersennes", id: false, force: :cascade do |t|
     t.integer "num", null: false
-    t.integer "result", array: true
+    t.string "result"
     t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

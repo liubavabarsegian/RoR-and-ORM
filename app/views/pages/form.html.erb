@@ -12,9 +12,15 @@
         <h2>Ввод</h2>
         <%= form_tag("/output", :method => 'get', id: 'mersenne_form', class: 'form') do %>
         <p><%= label_tag("Введите положительное число n") %></p>
-        <p><%= number_field_tag(:num, 0, class: 'form-control', min: 0, placeholder: '0') %></p>
+        <p><%= number_field_tag(:num, class: 'form-control') %></p>
         <p><%= submit_tag("Найти числа Мерсена до n", :class => 'form-button') %></p>
         <% end %>
+        
         <div id="result"></div>
+        <% flash.each do |type, msg| %>
+			<div class='alert alert-info'>
+				<%= msg %>
+			</div>
+		<% end %>
 </main>
 
