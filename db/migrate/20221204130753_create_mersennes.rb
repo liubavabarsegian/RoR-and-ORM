@@ -1,6 +1,6 @@
 class CreateMersennes < ActiveRecord::Migration[7.0]
   def change
-    create_table :mersennes, :primary_key => 'num', id: false do |t|
+    create_table :mersennes, :primary_key => 'num' do |t|
       t.integer :num, null: false
       t.string :result
       t.integer :count

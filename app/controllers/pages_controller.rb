@@ -5,8 +5,9 @@ class PagesController < ApplicationController
 
   def output
     @input = params[:num].to_i
-    
-    if(@input <= 0)
+
+    new_elem = Mersenne.new(mersenne_params)
+    unless new_elem.valid?
       flash[:error] = 'Your stupid ass entered a non-positive value'
       redirect_to form_path
       return
@@ -25,6 +26,6 @@ class PagesController < ApplicationController
   end
 
   def db_to_xml
-    
+    render xml: Mersenne.all.limit(10)
   end
 end

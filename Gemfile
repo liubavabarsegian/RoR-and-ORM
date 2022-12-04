@@ -40,6 +40,11 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activemodel-serializers-xml'
+gem 'active_model_serializers'
+
+gem 'mongo_mapper'
+gem 'bson_ext'
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
@@ -67,7 +72,10 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end

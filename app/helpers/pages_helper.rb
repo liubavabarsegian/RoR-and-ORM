@@ -16,6 +16,10 @@ module PagesHelper
     (2...num).select { |i| mersenne?(i) }
     end
 
+    def mersenne_params
+        params.permit(:num) # явно задаем, какие параметры разрешены
+    end
+    
     def find_n(input)
         db_num_row = Mersenne.find_by(num: input)
     end
