@@ -22,6 +22,9 @@ class PagesController < ApplicationController
       @result_m = mersenne_to_n(@input)
       add_to_db(@input, @result_m)
     end
+  end
+
+  def db_to_xml
     
   end
 end
