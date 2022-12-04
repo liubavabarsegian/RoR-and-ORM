@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'home#welcome'
+
+  get 'form', to: 'pages#form'
+  get 'output', to: 'pages#output'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
