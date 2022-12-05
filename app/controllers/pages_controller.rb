@@ -8,12 +8,14 @@ class PagesController < ApplicationController
 
     @new_elem = Mersenne.new(mersenne_params)
     puts "AAAAA" 
-    puts @new_elem.valid?
-    unless @new_elem.valid?
-      flash[:error] = "Your stupid ass entered a non-positive value"
-      redirect_to form_path
-      return
-    end
+    puts Mersenne.new(mersenne_params).valid?
+    puts @new_elem.new_record?
+    puts @new_elem.errors.full_messages
+    # unless @new_elem.valid?
+    #   flash[:error] = "Your stupid ass entered a non-positive value"
+    #   redirect_to form_path
+    #   return
+    # end
 
     if (find_n(@input))
       @result_m = find_n(@input).result.split(' ')

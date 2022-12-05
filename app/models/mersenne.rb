@@ -5,7 +5,7 @@ class Mersenne < ApplicationRecord
     include PagesHelper
 
 
-    attr_accessor :num
-    validates :num, presence: true, comparison: { greater_than: 0}
-    self.primary_key = :num
+    attr_accessor :number
+    validates :number, presence: { message: 'не может быть пустым' }, comparison: { greater_than: 0}
+    self.primary_key = :number
 end

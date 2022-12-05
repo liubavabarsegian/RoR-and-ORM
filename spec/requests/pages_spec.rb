@@ -16,7 +16,7 @@ RSpec.describe "Pages", type: :request do
   end
 
   it 'expects to see Mersenne\'s numbers' do
-    get :output, params: { num: 150_000 }
+    get output_path, params: { num: 150_000 }
     expect(assigns[:result_m]).to eq([3, 7, 31, 127, 8191, 131_071])
   end
 end
