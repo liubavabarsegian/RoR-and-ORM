@@ -3,16 +3,20 @@ require 'rails_helper'
 RSpec.describe "Pages", type: :request do
   describe "GET /form" do
     it "returns http success" do
-      get "/pages/form"
+      get form_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /input" do
+  describe "GET /output" do
     it "returns http success" do
-      get "/pages/input"
+      get output_path
       expect(response).to have_http_status(:success)
     end
   end
 
+  it 'expects to see Mersenne\'s numbers' do
+    get :output, params: { num: 150_000 }
+    expect(assigns[:result_m]).to eq([3, 7, 31, 127, 8191, 131_071])
+  end
 end

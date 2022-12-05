@@ -6,9 +6,11 @@ class PagesController < ApplicationController
   def output
     @input = params[:num].to_i
 
-    new_elem = Mersenne.new(mersenne_params)
-    unless new_elem.valid?
-      flash[:error] = 'Your stupid ass entered a non-positive value'
+    @new_elem = Mersenne.new(mersenne_params)
+    puts "AAAAA" 
+    puts @new_elem.valid?
+    unless @new_elem.valid?
+      flash[:error] = "Your stupid ass entered a non-positive value"
       redirect_to form_path
       return
     end

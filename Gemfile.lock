@@ -259,6 +259,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   activemodel-serializers-xml
+  addressable
   bootsnap
   bson_ext
   capybara
