@@ -14,12 +14,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_130753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "mersennes", primary_key: "number", id: :integer, default: nil, force: :cascade do |t|
+  create_table "mersennes", primary_key: "num", id: :integer, default: nil, force: :cascade do |t|
     t.string "result"
     t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["number"], name: "index_mersennes_on_number", unique: true
+    t.index ["num"], name: "index_mersennes_on_num", unique: true
   end
 
 end

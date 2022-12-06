@@ -10,7 +10,7 @@ RSpec.describe "Pages", type: :request do
 
   describe "GET /output" do
     it "returns http success" do
-      get output_path
+      get output_path, params: {num: Faker::Number::positive.to_i}
       expect(response).to have_http_status(:success)
     end
   end

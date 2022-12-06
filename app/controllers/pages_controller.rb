@@ -7,19 +7,16 @@ class PagesController < ApplicationController
     @input = params[:num].to_i
 
     @new_elem = Mersenne.new(mersenne_params)
-    puts "AAAAA" 
-    puts Mersenne.new(mersenne_params).valid?
-    puts @new_elem.new_record?
-    puts @new_elem.errors.full_messages
-    # unless @new_elem.valid?
-    #   flash[:error] = "Your stupid ass entered a non-positive value"
-    #   redirect_to form_path
-    #   return
-    # end
+    unless @new_elem.valid?
+      flash[:error] = "Your stupid ass entered a non-positive value"
+      redirect_to form_path
+      return
+    end
 
     if (find_n(@input))
       @result_m = find_n(@input).result.split(' ')
       @count = find_n(@input).count
+
       logger.debug "HERE IS THE RESULT CLASS"
       logger.debug find_n(@input).result
       logger.debug find_n(@input).result.class
@@ -30,6 +27,11 @@ class PagesController < ApplicationController
   end
 
   def db_to_xml
-    render xml: Mersenne.all.limit(10)
+    render xml: Mersenne.last(15)
+  end
+
+  private
+  def mersenne_params
+    params.permit(:num)
   end
 end

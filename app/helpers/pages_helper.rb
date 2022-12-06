@@ -16,17 +16,15 @@ module PagesHelper
     (2...num).select { |i| mersenne?(i) }
     end
 
-    def mersenne_params
-        params.permit(:number) # явно задаем, какие параметры разрешены
-    end
+    
     
     def find_n(input)
-        db_num_row = Mersenne.find_by(number: input)
+        db_num_row = Mersenne.find_by(num: input)
     end
 
     def add_to_db(input, result)
         row = []
-        row << { number: input, result: result.join(' '),
+        row << { num: input, result: result.join(' '),
             count: result.size}
         Mersenne.insert_all(row)
     end
