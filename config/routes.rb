@@ -1,4 +1,6 @@
-require "addressable/uri"
+# frozen_string_literal: true
+
+require 'addressable/uri'
 
 Rails.application.routes.draw do
   root 'home#welcome'

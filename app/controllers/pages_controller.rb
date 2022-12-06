@@ -1,26 +1,20 @@
+# frozen_string_literal: true
+
+# class PagesController
 class PagesController < ApplicationController
   include PagesHelper
-  def form
-  end
+  def form; end
 
   def output
+    return if try_to_create.nil?
+
     @input = params[:num].to_i
-
-    @new_elem = Mersenne.new(mersenne_params)
-    unless @new_elem.valid?
-      flash[:error] = "Your stupid ass entered a non-positive value"
-      redirect_to form_path
-      return
-    end
-
-    if (find_n(@input))
+    if find_n(@input)
       @result_m = find_n(@input).result.split(' ')
       @count = find_n(@input).count
-
-      logger.debug "HERE IS THE RESULT CLASS"
-      logger.debug find_n(@input).result
-      logger.debug find_n(@input).result.class
-    else 
+      logger.debug "HERE IS THE RESULT VALUE: #{find_n(params[:num].to_i).result}"
+      logger.debug "HERE IS THE RESULT CLASS: #{find_n(params[:num].to_i).result.class}"
+    else
       @result_m = mersenne_to_n(@input)
       add_to_db(@input, @result_m)
     end
@@ -31,7 +25,17 @@ class PagesController < ApplicationController
   end
 
   private
+
   def mersenne_params
     params.permit(:num)
+  end
+
+  def try_to_create
+    @new_elem = Mersenne.new(mersenne_params)
+    unless @new_elem.valid?
+      flash[:error] = 'Your stupid ass entered a non-positive value'
+      redirect_to form_path
+      nil
+    end
   end
 end

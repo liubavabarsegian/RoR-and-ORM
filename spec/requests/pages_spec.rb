@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Pages", type: :request do
-  describe "GET /form" do
-    it "returns http success" do
+RSpec.describe 'Pages', type: :request do
+  describe 'GET /form' do
+    it 'returns http success' do
       get form_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /output" do
-    it "returns http success" do
-      get output_path, params: {num: Faker::Number::positive.to_i}
+  describe 'GET /output' do
+    it 'returns http success' do
+      get output_path, params: { num: Faker::Number.positive.to_i }
       expect(response).to have_http_status(:success)
     end
   end
