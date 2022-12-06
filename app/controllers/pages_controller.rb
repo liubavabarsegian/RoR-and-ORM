@@ -6,7 +6,12 @@ class PagesController < ApplicationController
   def form; end
 
   def output
-    return if try_to_create.nil?
+    @new_elem = Mersenne.new(mersenne_params)
+    unless @new_elem.valid?
+      flash[:error] = 'Your stupid ass entered a non-positive value'
+      redirect_to form_path
+      nil
+    end
 
     @input = params[:num].to_i
     if find_n(@input)
@@ -28,14 +33,5 @@ class PagesController < ApplicationController
 
   def mersenne_params
     params.permit(:num)
-  end
-
-  def try_to_create
-    @new_elem = Mersenne.new(mersenne_params)
-    unless @new_elem.valid?
-      flash[:error] = 'Your stupid ass entered a non-positive value'
-      redirect_to form_path
-      nil
-    end
   end
 end
