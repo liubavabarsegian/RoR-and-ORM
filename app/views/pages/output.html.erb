@@ -5,15 +5,15 @@
         <table class = "table-bordered">
             <thead>
                 <tr>
+                    <th>№</th>
                     <th>Число Мерсенна</th>
-                    <th>Соответствующее число p, при котором (2<sup>p</sup> - 1) равно числу Мерсена</th>
                 </tr>
             </thead>
             <tbody>
                 <%i = 0%>
                 <% while i < @result_m.size do %>
                     <tr>
-                        <td><%= i%></td>
+                        <td><%= i + 1%></td>
                         <td><%= @result_m[i]%></td>
                     </tr>
                     <%i+= 1%>
